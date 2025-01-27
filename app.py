@@ -3,6 +3,7 @@ import newspaper
 
 from flask_cors import CORS
 import nltk
+nltk.download('punkt_tab')
 import openai
 from dotenv import load_dotenv
 import sys
