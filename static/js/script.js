@@ -249,7 +249,7 @@ document.getElementById("urlForm").addEventListener("submit", async function (ev
             meters.style.display = 'none'; // Hide if no bias data is available
         }
         // Make the fetch request to process the article
-        const response = await fetch('http://127.0.0.1:5000/extract-article', {
+        const response = await fetch('https://aletheia-zl14.onrender.com/extract-article', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ url }),
@@ -512,7 +512,7 @@ function generateCitation(format) {
 async function sendSentenceToBackend(sentence) {
     const loadingInterval = setLoadingMessage();
     try {
-      const response = await fetch('http://127.0.0.1:5000/process-sentence', {
+      const response = await fetch('https://aletheia-zl14.onrender.com/process-sentence', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
