@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aletheia</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <div id="header-container">
+            <div class="back-button-container" id="back-button-container" style="display:none;">
+                <button class="back-button" id="backButton">&larr; Back</button>
+                <span class="status-text" id="status-text">Not Logged In</span>
+            </div>
+            
+            <h1>Aletheia</h1>    
+        </div>
+        <div id="formWithSource">
+            <form id="urlForm">
+                <label for="articleUrl">Enter Article URL:</label>
+                <input type="url" id="articleUrl" name="articleUrl" placeholder="https://example.com" required>
+                <button type="submit" class="analyze-button">Analyze</button>
+            </form>
+            <div id="auth-container">
+                <div id="form-toggle">
+                    <button id="show-login" class="active">Login</button>
+                    <button id="show-signup">Sign Up</button>
+                </div>
+                <!-- Login Form -->
+                <form id="login-form">
+                    <h2>Login</h2>
+                    <input type="email" id="login-email" placeholder="Email" required />
+                    <input type="password" id="login-password" placeholder="Password" required />
+                    <button type="submit">Login</button>
+                    <div id="login-error" style="margin-top: 10px; color: red;"></div>
+                </form>
+                <!-- Signup Form -->
+                <form id="signup-form" style="display: none;">
+                    <h2>Sign Up</h2>
+                    <input type="email" id="signup-email" maxlength="36" placeholder="Email" required />
+                    <input type="password" id="signup-password" maxlength="36" placeholder="Password" required />
+                    <button type="submit">Sign Up</button>
+                    <div id="signup-error" style="margin-top: 10px; color: red;"></div>
+                </form>
+            </div>
+            <div id="logged-in-container" style="display: none;">
+                <h2>Welcome, <span id="user-email"></span>!<span id="success-checkmark">✔️</span></h2>
+                <button id="logout-button">Log Out</button>
+            </div>
+
+            <div id="infoBoxes" style="display: none;">
+                <div id="sourceInfo">
+                    <h2>Source: <span id="source"></span></h2>
+                    <img id="sourceImage" alt="Source Logo" style="display: none;">
+                    <div id="meters">
+                        <!-- Bias Meter Wrapper -->
+                        <div id="biasMeter">
+                            <!-- Bias Indicator, which will move based on bias score -->
+                            <div id="biasIndicator"></div>
+                        </div> 
+                        <div id="biasTooltip" class="bias-tooltip">Political Bias</div> 
+                        <div id="relMeter">
+                            <!-- Reliability Indicator -->
+                            <div id="relIndicator"></div>
+                        </div>
+                        <div id="relTooltip" class="rel-tooltip">Reliability</div> 
+                    </div>
+                </div>
+                <div id="articleInfo">
+                    <h2>Article Info</h2>
+                    <div class="articleInfoElement"><h4>Author: </h4><span id="author"></span></div>
+                    <div class="articleInfoElement"><h4>Publish Date: </h4><span id="date"></span></div>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div id="suggestedArticlesSection">
+            <h2>Suggested Articles</h2>
+            <!-- Dropdown menu for selecting a topic -->
+            <label for="topicSelector" class="dropdown-label">Choose a topic:</label>
+            <select id="topicSelector" class="dropdown-menu">
+                <option value="world" selected>World</option>
+                <option value="technology">Technology</option>
+                <option value="sports">Sports</option>
+                <option value="business">Business</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="science">Science</option>
+                <option value="health">Health</option>
+            </select>
+            <div id="loadingSuggested" style="display: none;">
+                <div class="spinner"></div> Loading...
+            </div>
+            <div id="suggestedArticlesList"></div>
+        </div>
+                    
+        <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+            <div class="spinner"></div>
+        </div>
+        <div id="menu" style="display:none;">
+            <button class="menu-button active" id="viewArticleButton">Full Article</button>
+            <button class="menu-button" id="summaryButton">Summary</button>
+            <button class="menu-button" id="savedButton" >Saved Articles</button>
+            <button class="menu-button" id="settingsButton" >Settings</button>
+            
+        </div>
+        <div id="settingItems" style="display: none;">
+        <div id="fontButtons">
+            <button id="arialButton" class="font-button active">Arial</button>
+            <button id="timesButton" class="font-button">Times New Roman</button>
+            <button id="sansButton" class="font-button">Open Sans</button>
+            <button id="georgiaButton" class="font-button">Georgia</button>
+            <div id="fontExample">
+                Example Text. Blah blah blah...
+            </div>
+        </div>
+        <div id="citationButtons">
+            <button id="mlaButton" class="citation-button">MLA</button>
+            <button id="apaButton" class="citation-button">APA</button>
+            <div id="citation">Generate Citation</div>
+        </div>
+    </div>
+        <div id="mainText" style="display: none;">
+            <div id="articleText">
+                <h3><span id="title1"></span></h3>
+                <button id="save-button" disabled data-tooltip="Please log in to save articles">Save URL</button>
+                <p id="articleContent"></p>
+            </div>
+            <div id="factCheckText">
+                <h3>Fact Checker</h3>
+                <p id="factCheckContent">Select One Sentence To Analyze.</p>
+            </div>
+        </div>
+        
+        <div id="summaryText" style="display: none;">
+            <h3><span id="title2"></span></h3>
+            <p id="summaryContent"></p>
+        </div>
+        <div id="savedURLS" style="display:none;">
+            <h3>Saved Articles: <span id="savedArticlesCount">(0)</span></h3>
+            <ul id="saved-urls-list"></ul>
+        </div>
+        <textarea id="errorMessage" rows="4" cols="50" style="display: none;" readonly></textarea>
+        <script type="module" src="{{ url_for('static', filename='js/script.js') }}"></script>
+        
+    </body>
+</html>
