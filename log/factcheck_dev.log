@@ -1,0 +1,37 @@
+[INFO]2025-01-27 01:34:18,478 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 01:34:18,900 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 01:34:19,309 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 01:34:19,714 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 01:34:20,115 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 01:34:20,540 __init__.py:76: ===Sub-modules Init Finished===
+[INFO]2025-01-27 01:34:23,581 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 01:34:24,036 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 01:34:24,516 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 01:34:24,949 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 01:34:25,365 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 01:34:25,796 __init__.py:76: ===Sub-modules Init Finished===
+[INFO]2025-01-27 10:10:06,763 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 10:10:07,159 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 10:10:07,569 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 10:10:07,971 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 10:10:08,388 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 10:10:08,764 __init__.py:76: ===Sub-modules Init Finished===
+[INFO]2025-01-27 10:10:12,356 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 10:10:12,901 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 10:10:13,497 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 10:10:13,952 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 10:10:14,471 __init__.py:61: == LLMClient is not specified, use default llm client.
+[INFO]2025-01-27 10:10:14,914 __init__.py:76: ===Sub-modules Init Finished===
+[INFO]2025-01-27 10:10:51,990 __init__.py:110: == raw_text claims 0 --- GitHub does not allow file uploads larger than 25 megabytes through the browser. --- {'text': 'GitHub does not allow us to upload files larger than 25 megabytes through the browser.', 'start': 0, 'end': 86}
+[INFO]2025-01-27 10:10:51,991 __init__.py:112: == Checkworthy claims 0: GitHub does not allow file uploads larger than 25 megabytes through the browser.
+[INFO]2025-01-27 10:10:51,992 __init__.py:118: == Claim: GitHub does not allow file uploads larger than 25 megabytes through the browser. --- Queries: ['GitHub does not allow file uploads larger than 25 megabytes through the browser.', 'What is the maximum file size allowed for uploads through the browser on GitHub?']
+[INFO]2025-01-27 10:10:51,993 serper_retriever.py:31: Collecting evidences ...
+[INFO]2025-01-27 10:10:53,010 serper_retriever.py:44: Collect evidences done!
+[INFO]2025-01-27 10:10:53,012 __init__.py:125: == Claim: GitHub does not allow file uploads larger than 25 megabytes through the browser.
+[INFO]2025-01-27 10:10:53,013 __init__.py:126: == Evidence: [{'text': 'GitHub does not allow file uploads larger than 25 megabytes through the browser.\nAnswer: Files that you add to a repository via a browser are limited to 25 MiB per file. You can add larger files, up to 100 MiB each, via the command line. For more information, see Adding a file to a repository using the command line. To add files larger than 100 MiB, you must use Git Large File Storage.', 'url': 'Google Answer Box'}, {'text': 'What is the maximum file size allowed for uploads through the browser on GitHub?\nAnswer: If you add a file to a repository via a browser, the file can be no larger than 25 MiB. For more information, see Adding a file to a repository. GitHub blocks files larger than 100 MiB. To track files beyond this limit, you must use Git Large File Storage (Git LFS).', 'url': 'Google Answer Box'}]
+
+[INFO]2025-01-27 10:10:55,558 __init__.py:132: == Claim: GitHub does not allow file uploads larger than 25 megabytes through the browser. --- Verify: [Evidence(claim='GitHub does not allow file uploads larger than 25 megabytes through the browser.', text='GitHub does not allow file uploads larger than 25 megabytes through the browser.\nAnswer: Files that you add to a repository via a browser are limited to 25 MiB per file. You can add larger files, up to 100 MiB each, via the command line. For more information, see Adding a file to a repository using the command line. To add files larger than 100 MiB, you must use Git Large File Storage.', url='Google Answer Box', reasoning='The evidence explicitly states that GitHub limits file uploads through the browser to 25 MiB, matching the claim. It further elaborates that larger files can be added via the command line or Git Large File Storage, which is consistent with the claim about browser limitations. Thus, the evidence supports the claim.', relationship='SUPPORTS'), Evidence(claim='GitHub does not allow file uploads larger than 25 megabytes through the browser.', text='What is the maximum file size allowed for uploads through the browser on GitHub?\nAnswer: If you add a file to a repository via a browser, the file can be no larger than 25 MiB. For more information, see Adding a file to a repository. GitHub blocks files larger than 100 MiB. To track files beyond this limit, you must use Git Large File Storage (Git LFS).', url='Google Answer Box', reasoning='The evidence states that if you add a file to a repository via the browser on GitHub, the file can be no larger than 25 MiB. This directly supports the claim that GitHub does not allow file uploads larger than 25 megabytes through the browser.', relationship='SUPPORTS')]
+[INFO]2025-01-27 10:10:55,561 __init__.py:134: == State: Done! 
+ Total time: 8.87s. (create claims:5.31s |||  retrieve:1.02s ||| verify:2.55s)
+[INFO]2025-01-27 10:10:55,566 __init__.py:233: == Overall Factuality: 1.0
+
